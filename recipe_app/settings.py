@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
 '127.0.0.1',
 'recipe-app-env.eba-m58ivb4g.us-west-2.elasticbeanstalk.com',
+'recipesearchdjangoapp.herokuapp.com'
 ]
 
 
@@ -126,10 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    'static',
+    os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
