@@ -1,70 +1,48 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-    <title>Recipe Finder Search</title>
-  </head>
-  <body>
-    <div class="container">
-      <br />
-      <h2>Search Recipe by Name</h2>
-      <br /><br /><br />
-
-      <!-- bootstrap dark navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/recipe-search">Home</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- navbar links to access different fitness calculators -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">Home</a>
-            <a class="nav-item nav-link active" href="/search-by-name">Search by Name<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="/search-by-ingredient">Search by Ingredient</a>
-            {# <a class="nav-item nav-link" name="/recipe-search">Logout</a> #}
+{% extends "recipe_search/base.html" %} 
+{% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Recipe Finder - Search by Name</div>
+    <div class="card-body">
+      <form method="GET" action="{% url 'recipe-search-food-name' %}">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search for Recipe</span>
           </div>
+          <input
+            type="text"
+            name="searchRecipe"
+            class="form-control"
+            placeholder="eg. banana muffin or apple pie..."
+            aria-label="searchRecipe"
+            aria-describedby="basic-addon1"
+          />
+          <button class="btn btn-primary" type="submit" name="submitRecipeSearch">
+            Search
+          </button>
         </div>
-      </nav>
-
-      <br /><br />
-
-      <div class="container">
-        <!-- bootstrap card to make the extra space look faded -->
-        <div class="card card-register mx-auto mt-2">
-          <div class="card-header">Recipe Finder - Search By Name</div>
-          <div class="card-body">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Recipe Name</span>
+      </form>
+      
+      <div class="row"> 
+      {% if query %}
+        {% for recipe in search_results %}
+          <div class="col-lg-3 d-flex align-items-stretch">
+            <div class="card">
+              <img class="card-img-top img-fluid" src="{{ recipe.image }}" alt="{{ recipe.label }}" width="200" height="200">
+              <div class="card-block">
+                <h5 class="card-title">{{ recipe.label }}</h5>
+                {% for ingredients in recipe.ingredient_names %}
+                  <p class="card-text">{{ ingredients }}</p>
+                {% endfor %}
+                <a href="{{ recipe.url }}" class="btn btn-primary">Go To Recipe</a>
               </div>
-              <input type="text" name="searchRecipe" class="form-control" placeholder="searchRecipe" aria-label="searchRecipe" aria-describedby="basic-addon1"/>
-			  <button class="btn btn-primary" type="submit" name="submitRecipeSearch">Search</button>
             </div>
           </div>
-        </div>
+        {% endfor %}
+      {% endif %}
       </div>
     </div>
-  </body>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"
-  ></script>
-</html>
+  </div>
+</div>
+{% endblock content %}

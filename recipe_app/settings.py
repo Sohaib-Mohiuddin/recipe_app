@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
 '127.0.0.1',
-'recipe-app-env.eba-m58ivb4g.us-west-2.elasticbeanstalk.com',
+# 'recipe-app-env.eba-m58ivb4g.us-west-2.elasticbeanstalk.com',
 'recipesearchdjangoapp.herokuapp.com'
 ]
 

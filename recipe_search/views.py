@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView
 from py_edamam import PyEdamam
 
 # Create your views here.
-edamam_conn = PyEdamam(recipes_appid='3281df5a', recipes_appkey='d8593ef2bf3fe138d042e548796c986a')
+
 
 users = [
 	{
@@ -28,7 +28,16 @@ def home(request):
 	return render(request, 'recipe_search/home.html', context)
 
 def search_by_name(request):
-	return render(request, 'recipe_search/searchbyname.html')
+	query=None
+	search_results = []
+	if request.method == "GET":
+		edamam_conn = PyEdamam(recipes_appid='3281df5a', recipes_appkey='d8593ef2bf3fe138d042e548796c986a')
+		query = request.GET.get('searchRecipe')
+		search_results = edamam_conn.search_recipe(query)
+	
+	return render(request, 'recipe_search/searchbyname.html', {'query' : query,
+											'search_results' : search_results})
 
 def search_by_ingredient(request):
 	return render(request, 'recipe_search/searchbyingredient.html')
+
