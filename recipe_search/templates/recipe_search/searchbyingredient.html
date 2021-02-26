@@ -1,0 +1,58 @@
+{% extends "recipe_search/base.html" %} 
+{% block content %}
+<div class="container">
+  <!-- bootstrap card to make the extra space look faded -->
+  <div class="card card-register mx-auto mt-2">
+    <div class="card-header">Recipe Finder - Search by Ingredient Name</div>
+    <div class="card-body">
+      <form method="GET" action="{% url 'recipe-search-food-ingredient' %}">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search Ingredient/Food</span>
+          </div>
+          <input
+            type="text"
+            name="searchIngredient"
+            class="form-control"
+            placeholder="eg. apple or banana bread..."
+            aria-label="searchIngredient"
+            aria-describedby="basic-addon1"
+          />
+          <button class="btn btn-primary" type="submit" name="submitIngredientSearch">
+            Search
+          </button>
+        </div>
+      </form>
+      
+      <div class="row"> 
+      {% if query_ingr %}
+        {% for food in search_results_ingr.hints %}
+          <div class="col-lg-3">
+            <div class="card" style="paddingBottom:20;">
+          	{% if 'image' in food.food %}
+              <img class="card-img-top img-fluid" src="{{ food.food.image }}" alt="{{ food.food.label }}" width="200" height="200">
+            {% else %}
+            	<img class="card-img-top img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="{{ food.food.label }}" width="200" height="200">
+            {% endif %}
+              <div class="card-block">
+                <h5 class="card-header">{{ food.food.label }}</h5>
+                <ul class="list-group list-group-flush">
+                	<li class="list-group-item">Category: {{ food.food.category }}</li>
+                	{% if 'foodContentsLabel' in food.food %}
+                		<li class="list-group-item">Content Labels: {{ food.food.foodContentsLabel }}</li>
+                	{% else %}
+                		<li class="list-group-item">No Content Label(s)</li>
+                	{% endif %}
+                	<li class="list-group-item">Energy: {{ food.food.nutrients.ENERC_KCAL }}kcal</li>
+                	<li class="list-group-item">Carbohydrates: {{ food.food.nutrients.CHOCDF }}g</li>
+              	</ul>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -31,10 +31,12 @@
             <div class="card">
               <img class="card-img-top img-fluid" src="{{ recipe.image }}" alt="{{ recipe.label }}" width="200" height="200">
               <div class="card-block">
-                <h5 class="card-title">{{ recipe.label }}</h5>
+                <h5 class="card-header">{{ recipe.label }}</h5>
+                <ul class="list-group list-group-flush">
                 {% for ingredients in recipe.ingredient_names %}
-                  <p class="card-text">{{ ingredients }}</p>
+                	<li class="list-group-item">{{ ingredients }}</li>
                 {% endfor %}
+              	</ul>
                 <a href="{{ recipe.url }}" class="btn btn-primary">Go To Recipe</a>
               </div>
             </div>
