@@ -3,26 +3,9 @@ from django.views.generic import TemplateView, ListView
 from py_edamam import PyEdamam, Edamam
 
 # Create your views here.
-users = [
-	{
-		'name': 'sohaib',
-		'username': 'sm',
-		'date': '2018-27-08'
-	},
-	{
-		'name': 'user2',
-		'username': 'userdsfds',
-		'date': '2020-27-08'
-	}
-]
-
-
 
 def home(request):
-	# print(request.META)
-	context = {}
-	context['users'] = users
-	return render(request, 'recipe_search/home.html', context)
+	return render(request, 'recipe_search/home.html')
 
 def search_by_name(request):
 	context = {}
@@ -40,3 +23,5 @@ def search_by_ingredient(request):
 		context['search_results_ingr'] = edamam_conn_ingr.search_food(context['query_ingr'])
 	return render(request, 'recipe_search/searchbyingredient.html', context)
 
+def saved_ingredient_list(request):
+	return render(request, 'recipe_search/savedlist.html')

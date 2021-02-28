@@ -7,9 +7,9 @@
     <div class="card-body">
       <form method="GET" action="{% url 'recipe-search-food-ingredient' %}">
         <div class="input-group mb-3">
-          <div class="input-group-prepend">
+          <!-- <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Search Ingredient/Food</span>
-          </div>
+          </div> -->
           <input
             type="text"
             name="searchIngredient"
@@ -43,8 +43,8 @@
                 	{% else %}
                 		<li class="list-group-item">No Content Label(s)</li>
                 	{% endif %}
-                	<li class="list-group-item">Energy: {{ food.food.nutrients.ENERC_KCAL }}kcal</li>
-                	<li class="list-group-item">Carbohydrates: {{ food.food.nutrients.CHOCDF }}g</li>
+                	<li class="list-group-item">Energy: {{ food.food.nutrients.ENERC_KCAL }} kcal</li>
+                	<li class="list-group-item">Carbohydrates: {{ food.food.nutrients.CHOCDF }} g</li>
               	</ul>
               </div>
             </div>

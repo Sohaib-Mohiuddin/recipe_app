@@ -38,6 +38,8 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'recipe_search.apps.RecipeSearchConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,3 +141,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Crispy forms config
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Redirect login url - Changing default from /accounts/profile
+LOGIN_REDIRECT_URL = 'recipe-search-home'
