@@ -27,7 +27,7 @@
       <div class="row"> 
       {% if query_ingr %}
         {% for food in search_results_ingr.hints %}
-          <div class="col-lg-3">
+          <div class="col-lg-3 d-flex align-items-stretch mb-3">
             <div class="card" style="paddingBottom:20;">
           	{% if 'image' in food.food %}
               <img class="card-img-top img-fluid" src="{{ food.food.image }}" alt="{{ food.food.label }}" width="200" height="200">
