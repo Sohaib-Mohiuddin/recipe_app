@@ -21,16 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9hx@6fm@0$be7x#)3gm(%=c@4ugbbt_*^mj=(%$=v$(l+*um#!'
-
+# SECRET_KEY = '9hx@6fm@0$be7x#)3gm(%=c@4ugbbt_*^mj=(%$=v$(l+*um#!'
+SECRET_KEY = os.environ['RECIPE_APP_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-# '127.0.0.1',
-# 'recipe-app-env.eba-m58ivb4g.us-west-2.elasticbeanstalk.com',
-# 'recipesearchdjangoapp.herokuapp.com',
-'*'
+'127.0.0.1',
+'recipesearchdjangoapp.herokuapp.com',
 ]
 
 

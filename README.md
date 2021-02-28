@@ -6,12 +6,14 @@ This application is a 3-in-1 application that provides the ability to find recip
 
 ## Features
 
-### Back-End
+### Back-End / Languages
 - Database: Amazon RDS
 	- Amazon RDS was used to host the tables required to run the web application without the use of local databases provided by heroku. RDS also hosts the tables that save the user and user saved ingredients list. 
 - Deployment: Heroku / Localhost
+	- Heroku was used to deploy the Django web application. Heroku provided the necessary environment to host the Recipe Finder application on the internet. 
 - API: Edamam API
-- Encryption: Python
+	- Edamam API provides 1,000,000+ recipes and 600,000+ foods in the database to access via natural language searches. 
+- Language/FrameWork: Django
 
 ### Front-End
 - Recipe Finder: This feature allows the user to search Edamam's API for recipes. Edamam currently has over 1 million recipes and also supports natural language searching. Any previous searches you have in the search bar will appear as suggestions for future searches to save time. 
@@ -21,6 +23,9 @@ This application is a 3-in-1 application that provides the ability to find recip
 
 ## Usage
 - Go to: [Recipe Finder app](https://recipesearchdjangoapp.herokuapp.com/)
+- Dummy Credentials for testing:
+	- username: newuser2
+	- password: testtest2
 
 ## Screenshots
 
