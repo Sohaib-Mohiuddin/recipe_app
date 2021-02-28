@@ -3,7 +3,6 @@ from django.views.generic import TemplateView, ListView
 from py_edamam import PyEdamam, Edamam
 
 # Create your views here.
-user_ip = 'User'
 users = [
 	{
 		'name': 'sohaib',
@@ -17,21 +16,12 @@ users = [
 	}
 ]
 
-def visitor_ip_address(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
 
 def home(request):
-	user_ip = visitor_ip_address(request)
 	# print(request.META)
 	context = {}
 	context['users'] = users
-	context['user_ip'] = user_ip
 	return render(request, 'recipe_search/home.html', context)
 
 def search_by_name(request):

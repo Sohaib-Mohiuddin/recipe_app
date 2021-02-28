@@ -27,9 +27,10 @@ SECRET_KEY = '9hx@6fm@0$be7x#)3gm(%=c@4ugbbt_*^mj=(%$=v$(l+*um#!'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'127.0.0.1',
+# '127.0.0.1',
 # 'recipe-app-env.eba-m58ivb4g.us-west-2.elasticbeanstalk.com',
-'recipesearchdjangoapp.herokuapp.com'
+# 'recipesearchdjangoapp.herokuapp.com',
+'*'
 ]
 
 
@@ -84,8 +85,12 @@ WSGI_APPLICATION = 'recipe_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ['RDS_DB_NAME'],
+        'USER': os.environ['RDS_USERNAME'],
+        'PASSWORD': os.environ['RDS_PASSWORD'],
+        'HOST': os.environ['RDS_HOSTNAME'],
+        'PORT': os.environ['RDS_PORT'],
     }
 }
 
