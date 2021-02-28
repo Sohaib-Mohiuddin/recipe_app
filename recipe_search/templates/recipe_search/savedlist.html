@@ -1,0 +1,14 @@
+{% extends "recipe_search/base.html" %}
+{% block content %}
+<div class="container">
+	<!-- bootstrap card to make the extra space look faded -->
+	<div class="card card-register mx-auto mt-2">
+		<div class="card-header">Recipe Finder - Saved Ingredients List</div>
+		<div class="card-body">
+			{% for ingredients in saved_list %}
+				<p>{{ ingredients }}</p>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock content %}

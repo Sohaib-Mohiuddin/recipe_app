@@ -2,8 +2,8 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import login_required
 from py_edamam import PyEdamam, Edamam
-
-# Create your views here.
+from .models import SavedList
+# from users.forms import SavedListForm
 
 def home(request):
 	return render(request, 'recipe_search/home.html')
@@ -28,4 +28,19 @@ def search_by_ingredient(request):
 
 @login_required
 def saved_ingredient_list(request):
-	return render(request, 'recipe_search/savedlist.html')
+	context = {}
+	user = request.user
+	saved_list = SavedList.objects.get(user=user).saved_list
+	altered_list = list(saved_list.split(','))
+	context['saved_list'] = altered_list
+	return render(request, 'recipe_search/savedlist.html', context)
+
+# TODO 2 FIX ADD TO LIST FEATURE
+# @login_required
+# def add_to_list(request):
+# 	user = request.user
+# 	saved_list = SavedList.objects.get(user=user).saved_list
+# 	form = SavedListForm(request.POST, instance=update_list)
+# 	if form.is_valid():
+# 		form.save()
+# 		return render(request, 'recipe_search/searchbyingredient.html', context)

@@ -35,7 +35,7 @@
             	<img class="card-img-top img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="{{ food.food.label }}" width="200" height="200">
             {% endif %}
               <div class="card-block">
-                <h5 class="card-header">{{ food.food.label }}</h5>
+                <h5 class="card-header">{{ food.food.label }}<a href="{{ food.food.uri }}" class="btn btn-secondary btn-sm ml-2">save</a></h5>
                 <ul class="list-group list-group-flush">
                 	<li class="list-group-item">Category: {{ food.food.category }}</li>
                 	{% if 'foodContentsLabel' in food.food %}
@@ -45,6 +45,9 @@
                 	{% endif %}
                 	<li class="list-group-item">Energy: {{ food.food.nutrients.ENERC_KCAL }} kcal</li>
                 	<li class="list-group-item">Carbohydrates: {{ food.food.nutrients.CHOCDF }} g</li>
+                  <li class="list-group-item">Fat: {{ food.food.nutrients.FAT }} g</li>
+                  <li class="list-group-item">Protein: {{ food.food.nutrients.PROCNT }} g</li>
+                  <li class="list-group-item">Fiber: {{ food.food.nutrients.FIBTG }} g</li>
               	</ul>
               </div>
             </div>

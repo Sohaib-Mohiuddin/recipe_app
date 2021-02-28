@@ -40,11 +40,12 @@
 	</header>
 	
 	<div class="container">
-		<br><br><br><br>
+		<br><br><br>
 		<!-- <h2>Recipe Finder</h2> -->
 		{% block header %}
 			{% if user.is_authenticated %}
-				<h2>User: {{ user }}</h2>
+				<h3>User: {{ user }}</h3>
+				<hr>
 			{% endif %}
 		{%endblock header %}
 		

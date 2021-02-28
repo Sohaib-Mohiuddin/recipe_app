@@ -22,6 +22,8 @@ from django.contrib.auth import views as login_out_views
 """
 ''          	- route to recipe-search app
 admin/			- route to django administrative services
+
+Template View file naming -> <app>/<model>_<viewtype>.html
 """
 urlpatterns = [
 	path('admin/', admin.site.urls),
