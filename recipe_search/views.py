@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import TemplateView, ListView
+from django.contrib.auth.decorators import login_required
 from py_edamam import PyEdamam, Edamam
 
 # Create your views here.
@@ -7,6 +8,7 @@ from py_edamam import PyEdamam, Edamam
 def home(request):
 	return render(request, 'recipe_search/home.html')
 
+@login_required
 def search_by_name(request):
 	context = {}
 	if request.method == "GET":
@@ -15,6 +17,7 @@ def search_by_name(request):
 		context['search_results'] = edamam_conn.search_recipe(context['query'])
 	return render(request, 'recipe_search/searchbyname.html', context)
 
+@login_required
 def search_by_ingredient(request):
 	context = {}
 	if request.method == "GET":
@@ -23,5 +26,6 @@ def search_by_ingredient(request):
 		context['search_results_ingr'] = edamam_conn_ingr.search_food(context['query_ingr'])
 	return render(request, 'recipe_search/searchbyingredient.html', context)
 
+@login_required
 def saved_ingredient_list(request):
 	return render(request, 'recipe_search/savedlist.html')

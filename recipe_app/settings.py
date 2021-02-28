@@ -147,3 +147,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect login url - Changing default from /accounts/profile
 LOGIN_REDIRECT_URL = 'recipe-search-home'
+LOGIN_URL = 'recipe-search-login'

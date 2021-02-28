@@ -27,11 +27,11 @@
 					</div>
 					<div class="navbar-nav">
 						{% if user.is_authenticated %}
-							<a class="nav-item nav-link" href="{% url 'recipe-search-saved-list' %}">Saved Ingredients</a>
-							<a class="nav-item nav-link" href="{% url 'recipe-search-logout' %}">Logout</a>
+							<a class="nav-item nav-link float-right" href="{% url 'recipe-search-saved-list' %}">Saved Ingredients</a>
+							<a class="nav-item nav-link float-right" href="{% url 'recipe-search-logout' %}">Logout</a>
 						{% else %}
-							<a class="nav-item nav-link" href="{% url 'recipe-search-login' %}">Login</a>
-							<a class="nav-item nav-link" href="{% url 'recipe-search-register' %}">Register</a>
+							<a class="nav-item nav-link float-right" href="{% url 'recipe-search-login' %}">Login</a>
+							<a class="nav-item nav-link float-right" href="{% url 'recipe-search-register' %}">Register</a>
 						{% endif %}
 					</div>
 				</div>
