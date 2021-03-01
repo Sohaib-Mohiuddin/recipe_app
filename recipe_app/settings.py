@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = '9hx@6fm@0$be7x#)3gm(%=c@4ugbbt_*^mj=(%$=v$(l+*um#!'
 SECRET_KEY = os.environ['RECIPE_APP_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
 '127.0.0.1',
