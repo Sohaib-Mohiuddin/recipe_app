@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, ListView
 from django.contrib.auth.decorators import login_required
 from py_edamam import PyEdamam, Edamam
 from .models import SavedList
+import os
 # from users.forms import SavedListForm
 
 def home(request):
